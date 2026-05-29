@@ -106,22 +106,22 @@ Displays document statistics, approval rates, confidence scores, and upload acti
 
 ## Screenshots
 ### Login Page
-<img width="1920" height="1080" alt="Screenshot (743)" src="https://github.com/user-attachments/assets/fa5f07a3-6eb8-4ed8-9132-56be919d398f" />
+<img width="1920" height="1080" alt="Screenshot (744)" src="https://github.com/user-attachments/assets/df9652b0-955f-46d4-9f1e-e2fa69719890" />
 
 ### Dashboard
-<img width="1920" height="1080" alt="Screenshot (735)" src="https://github.com/user-attachments/assets/75b80722-0ab8-4018-a91f-b0e447e8714c" />
+<img width="1920" height="1080" alt="Screenshot (745)" src="https://github.com/user-attachments/assets/6300f9a1-9346-45d0-9815-103363ad7d76" />
 
 ### Upload Documents
-<img width="1920" height="1080" alt="Screenshot (737)" src="https://github.com/user-attachments/assets/5b9d492e-b862-48fd-afe7-a1c029ae4ab2" />
+<img width="1920" height="1080" alt="Screenshot (748)" src="https://github.com/user-attachments/assets/c9dd756d-fef0-4057-a337-403c182ce82c" />
 
 ### Document Management
-<img width="1920" height="1080" alt="Screenshot (738)" src="https://github.com/user-attachments/assets/8750ae0b-2ed5-4f9c-8645-2897b7e85d84" />
+<img width="1920" height="1080" alt="Screenshot (749)" src="https://github.com/user-attachments/assets/73163795-ccd9-48db-aad5-e1e31a6a7f8d" />
 
 ### Batch Processing
-<img width="1920" height="1080" alt="Screenshot (739)" src="https://github.com/user-attachments/assets/0819b0fa-ab55-4397-9bc2-7dafa3ee19d6" />
+<img width="1920" height="1080" alt="Screenshot (750)" src="https://github.com/user-attachments/assets/e11bb03d-5f16-456c-9b5d-1bf80cad268f" />
 
 ### Activity Logs
-<img width="1920" height="1080" alt="Screenshot (740)" src="https://github.com/user-attachments/assets/4f7de676-a80e-42a0-9ab8-87f8199b29a6" />
+<img width="1920" height="1080" alt="Screenshot (751)" src="https://github.com/user-attachments/assets/dcbd2856-1f50-4c3a-b95d-4c4bd0822338" />
 
 
 ## Future Enhancements
