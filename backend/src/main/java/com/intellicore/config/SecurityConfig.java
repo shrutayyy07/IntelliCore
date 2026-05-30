@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -21,6 +22,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
+@EnableMethodSecurity   // ← required for @PreAuthorize to work
 public class SecurityConfig {
 
     @Autowired
@@ -37,8 +39,7 @@ public class SecurityConfig {
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/documents/**").authenticated()
-                .requestMatchers("/api/documents/*/full").hasRole("ADMIN")
+                .requestMatchers("/api/health").permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().permitAll()
             )
@@ -49,11 +50,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
+        // Support comma-separated list of origins including wildcard patterns
         List<String> origins = Arrays.asList(allowedOrigins.split(","));
         config.setAllowedOriginPatterns(origins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
+        config.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;

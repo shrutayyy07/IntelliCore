@@ -17,6 +17,8 @@ public class BatchLogController {
     @Autowired private DocumentService documentService;
     @Autowired private LogService logService;
 
+    // ── Batch ─────────────────────────────────────────────────────────────────
+
     @PostMapping("/batch/process")
     public ResponseEntity<?> startBatch() {
         documentService.startBatchProcessing();
@@ -27,9 +29,11 @@ public class BatchLogController {
     public ResponseEntity<?> getBatchProgress() {
         return ResponseEntity.ok(Map.of(
             "progress", documentService.getBatchProgress(),
-            "running", documentService.isBatchRunning()
+            "running",  documentService.isBatchRunning()
         ));
     }
+
+    // ── Logs ──────────────────────────────────────────────────────────────────
 
     @GetMapping("/logs")
     public ResponseEntity<List<LogEntry>> getLogs() {
@@ -42,8 +46,13 @@ public class BatchLogController {
         return ResponseEntity.ok(Map.of("message", "Logs cleared"));
     }
 
+    // ── Health — Railway polls this; must respond in < 1 s ───────────────────
     @GetMapping("/health")
     public ResponseEntity<?> health() {
-        return ResponseEntity.ok(Map.of("status", "UP", "service", "IntelliCore"));
+        return ResponseEntity.ok(Map.of(
+            "status",  "UP",
+            "service", "IntelliCore",
+            "version", "1.0.0"
+        ));
     }
 }

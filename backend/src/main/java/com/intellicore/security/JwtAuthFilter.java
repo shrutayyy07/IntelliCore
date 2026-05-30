@@ -22,7 +22,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     private JwtService jwtService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain)
+    protected void doFilterInternal(HttpServletRequest req,
+                                    HttpServletResponse res,
+                                    FilterChain chain)
             throws ServletException, IOException {
 
         String authHeader = req.getHeader("Authorization");
@@ -31,10 +33,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (jwtService.isValid(token)) {
                 Claims claims = jwtService.parseToken(token);
                 String role = claims.get("role", String.class);
-                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(
-                        claims.getSubject(), null,
-                        List.of(new SimpleGrantedAuthority("ROLE_" + (role != null ? role : "USER")))
-                );
+                if (role == null) role = "USER";
+                UsernamePasswordAuthenticationToken auth =
+                        new UsernamePasswordAuthenticationToken(
+                                claims.getSubject(),
+                                null,
+                                List.of(new SimpleGrantedAuthority("ROLE_" + role))
+                        );
                 SecurityContextHolder.getContext().setAuthentication(auth);
             }
         }
